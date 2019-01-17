@@ -5,7 +5,9 @@
       <router-link to="/">Home</router-link>
       <router-link to="/order_book">Order Book</router-link>
       <router-link to="/documents">Documents</router-link>
-      <router-link to="/security">Security</router-link>      
+      <router-link to="/table/ethereum">Table</router-link> 
+      <router-link to="/table/bitcoin">Table</router-link>      
+           
     </nav>
     <router-view/>
   </div>
