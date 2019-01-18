@@ -1,25 +1,12 @@
 <template>
-    <div class="form">
-        <h2>{{ title }}</h2>
-        <ul v-for="(item, index) in workers" :key="index" v-if="item.merc">
-            <li @dblclick="deleteWorker(key)">
-                <p class="role">
-                    <span class="role-span">
-                        {{item.add_role_title}}
-                    </span>
-                </p>
-                <p class="fio">
-                    <span class="fio-span">
-                        {{item.fio}}
-                    </span>
-                </p>
-            </li>
-        </ul>
-        <button class="primary" @click="addWorker">+ Добавить сотрудника</button>
+    <div>
+        <p>Электронная форма выдачи наряда</p>
+        <orderBook :orderBookData="workers"/>
     </div>
 </template>
 
 <script>
+import orderBook from '@/components/order_book'
 export default {
     data() {
         return {
@@ -196,103 +183,12 @@ export default {
             }]
         }
     },
-    methods: {
-    addWorker() {
-      this.workers.push({
-        fio: 'Фамилия И.О.',
-        id: 30,
-        merc: true,
-        order_work: '1',
-        role_id: 0,
-        role_title: 'VGD',
-        add_role_id: 1,
-        add_role_title: 'ВГК',
-        sign: false,
-        specialty: 'I',
-        uid: '25000'
-      });
-    },
-    deleteWorker(index) {
-      this.worker.splice(index, 1);
+    components: {
+        orderBook
     }
-  }
 }
 </script>
 
 <style scoped>
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-.form {
-    font-size: 14px;
-    width: 250px;
-    max-width: 250px;
-    height: 30%;
-    max-height: 250px;
-    overflow: auto;
-    overflow-x: hidden;
-    background-color: #fff;
-}
-
-h2 {
-    width: 250px;
-    height: 50px;
-    color: #fff;
-    font-size: 16px;
-    text-align: center;
-    padding-top: 19px;
-    padding-bottom: 0;
-    background-color: #566a8d;
-}
-
-li {
-    display: flex;
-    list-style-type: none;
-    margin: 1px 0;
-    position: relative;
-}
-
-.form li:nth-of-type(2n+1) .fio {
-    background-color: #e6e6e6;
-}
-
-.form ul > li > p {
-    line-height: 1;
-}
-
-.role {
-  height: 35px;
-  width: 60px;
-  color: #fff;
-  text-align: center;
-  background-color: #8E96AD;
-
-}
-.fio {
-  height: 35px;
-  width: 190px;
-  text-align: center;
-  background-color: #fff;
-}
-
-.fio-span {
-  position: relative;
-  top: 30%;
-  color: #000;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.primary {
-  width: 100%;
-  height: 50px;
-  padding: 1px 0;
-  color: #fff;
-  background-color: #566A8D;
-}
-
 
 </style>
